@@ -1,0 +1,72 @@
+{
+  "name": "@leyyo/ruler",
+  "version": "1.0.1",
+  "description": "Ruler",
+  "keywords": [
+    "Ruler"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leyyonet/ruler.git"
+  },
+  "bugs": {
+    "email": "mustafayelmer@gmail.com",
+    "url": "https://github.com/leyyonet/ruler/issues"
+  },
+  "homepage": "https://github.com/leyyonet/ruler#readme",
+  "author": {
+    "name": "Mustafa Yelmer",
+    "email": "mustafayelmer@gmail.com"
+  },
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "clear": "rimraf dist && rimraf coverage",
+    "lint": "eslint src/**/*.ts",
+    "asset": "node -r ts-node/register commands/assets.ts",
+    "build": "npm run clear && tsc && npm run asset",
+    "test": "jest --config=jest.json --detectOpenHandles",
+    "test:watch": "jest --watch --config=jest.json",
+    "test:coverage": "rimraf coverage && jest --config=jest.json --coverage --coverageDirectory=coverage",
+    "ts": "node -r ts-node/register src/sample.ts",
+    "~publish": "npmaaa run build && npm publish -access=public"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-typescript": "^7.27.1",
+    "@eslint/js": "^9.28.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.29",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsdoc": "^50.7.1",
+    "eslint-plugin-node": "^11.1.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "test": "^3.3.0",
+    "ts-jest": "^29.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1"
+  },
+  "overrides": {
+    "eslint-config-standard": {
+      "eslint": "^9.28.0"
+    }
+  },
+  "dependencies": {
+    "@leyyo/common": "file:../common",
+    "@leyyo/core": "file:../core",
+    "@leyyo/injection": "file:../injection"
+  }
+}
