@@ -3,7 +3,7 @@ import {$assert, $dev, Func} from "@leyyo/common";
 
 import { FQN } from '../internal';
 
-export interface RulerOpt {
+export interface RuleOpt {
     config: RulerConfig;
 }
 export interface RulerConfig {
@@ -19,7 +19,7 @@ export function Rule(config?: RulerConfig): ClassDecorator {
 }
 
 const deco = decoratorPool
-    .newId<RulerOpt>(Rule)
+    .newId<RuleOpt>(Rule)
     .fqn(FQN)
     .targets('class')
     .keywords('ruler')
