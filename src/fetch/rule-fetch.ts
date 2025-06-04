@@ -7,11 +7,10 @@ import {
     PropertyReflectionLike,
     reflectionPool
 } from '@leyyo/core';
-import {CastType} from "@leyyo/cast";
 
 import {RuleFetchLike} from './index.types';
 import { FQN } from '../internal';
-import {Rule, UseRule, UseRuleOpt} from "../decorators";
+import {Rule, RuleType, UseRule, UseRuleOpt} from "../decorators";
 import {$repo} from "@leyyo/common";
 import {RuleHubLike} from "../hub";
 
@@ -55,7 +54,7 @@ export class RuleFetch implements RuleFetchLike {
         if (this._typedReflects.includes(target)) {
             return;
         }
-        if (source.hasDecorator(CastType)) {
+        if (source.hasDecorator(RuleType)) {
             switch (source.target) {
                 case 'parameter':
                     (target as unknown as ParameterReflectionLike).$secure.$setType(source.type);

@@ -1,7 +1,6 @@
 import {ClassLike} from "@leyyo/common";
-import {CastType} from "@leyyo/cast";
 
-import {ruleHub} from "../src";
+import {ruleHub, RuleType} from "../src";
 import {TmpClass, TmpField, TmpMethod, TmpParam} from "./decorators";
 
 interface MyRule1Opt {
@@ -31,7 +30,7 @@ export function myRule1(opt: MyRule1Opt): ClassLike {
                     name: 'myField1',
                     type: opt.myField1Type,
                     decorators: [
-                        CastType(opt.myField1Type)
+                        RuleType(opt.myField1Type)
                     ]
                 }
             ]
@@ -42,7 +41,7 @@ export function myRule1(opt: MyRule1Opt): ClassLike {
                 type: opt.myMethod1Type,
                 decorators: [
                     TmpMethod(opt.myMethod1Desc),
-                    CastType(opt.myMethod1Type, true),
+                    RuleType(opt.myMethod1Type, true),
                 ],
                 parameters: [
                     {
@@ -68,7 +67,7 @@ export function myRule1(opt: MyRule1Opt): ClassLike {
                 type: opt.myProperty1Type,
                 decorators: [
                     TmpField(opt.myProperty1Desc),
-                    CastType(opt.myProperty1Type),
+                    RuleType(opt.myProperty1Type),
                 ]
             }
         ],
