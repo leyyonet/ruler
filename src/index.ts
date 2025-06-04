@@ -1,4 +1,5 @@
 export * from './decorators';
-export * from './pool';
+export * from './hub';
+export * from './fetch';
 
 export * from './ruler-loader';

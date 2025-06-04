@@ -3,25 +3,21 @@ import {$assert, $dev, Func} from "@leyyo/common";
 
 import { FQN } from '../internal';
 
-export interface RuleOpt {
-    config: RulerConfig;
-}
-export interface RulerConfig {
-    temp?: string;
-}
-
 /**
  * Declare a rule
  */
-export function Rule(config?: RulerConfig): ClassDecorator {
-    return (clazz: Func) =>
-        deco.process([clazz], { config });
+export function Rule(name?: string): ClassDecorator {
+    return ((clazz: Func) => {
+        id.process([clazz], { });
+        return clazz;
+    }) as ClassDecorator;
 }
 
-const deco = decoratorPool
-    .newId<RuleOpt>(Rule)
+const id = decoratorPool
+    .newId(Rule)
     .fqn(FQN)
     .targets('class')
+    .rules('override-if-exists', 'no-copy')
     .keywords('ruler')
     .processor((ins, p) => {
         $assert.objectOptional(p.config, () => $dev.desc(ins, {field: 'config'}));
