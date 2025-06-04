@@ -31,6 +31,16 @@ const idTmpField = decoratorPool
     .fqn(FQN)
     .targets('field');
 
+export function TmpField2(): PropertyDecorator {
+    return (clazz, propertyKey) => {
+        idTmpField2.fork(clazz, propertyKey).set({});
+    }
+}
+const idTmpField2 = decoratorPool
+    .newId(TmpField2)
+    .fqn(FQN)
+    .targets('field');
+
 export function TmpParam(description: string): ParameterDecorator {
     return (clazz, propertyKey, index) => {
         idTmpParam.fork(clazz, propertyKey, index).set({description});

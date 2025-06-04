@@ -124,6 +124,9 @@ export class RuleFetch implements RuleFetchLike {
                             // copy field decorators
                             this._copyDecorators(targetPropRef, sourceFieldRef);
                         }
+                        else {
+                            targetClassRef.$secure.$copyProperty(sourceFieldRef);
+                        }
                     }
                 });
         }

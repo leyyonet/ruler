@@ -37,8 +37,12 @@ class RuleHub implements RuleHubLike {
 
         $assert.funcArray(decorators, () => $dev.opt({rule, field: 'decorators', desc: ref.description, where: `${FQN}.RuleHub#create`}));
         decorators.forEach(dec => {
-            // @ts-ignore
-            dec(...args);
+            try {
+                // @ts-ignore
+                dec(...args);
+            } catch (e) {
+                console.error(e.message);
+            }
         });
     }
     private _createFields(rule: string, ref: ClassReflectionLike, fields: Array<RuleFieldOpt>, keyword: DecoKeyword): void {
@@ -80,11 +84,6 @@ class RuleHub implements RuleHubLike {
         const holder = keyword === 'static' ? ref.creator : ref.creator.prototype;
 
         methods.forEach((method, index) => {
-            method.name;
-            method.type;
-            method.parameters;
-            method.decorators;
-
             $assert.text(method.name, () => $dev.opt({rule, field: `methods[${keyword}].name`, index, where: `${FQN}.RuleHub#create`}));
             $assert.funcOptional(method.type, () => $dev.opt({rule, field: `methods[${keyword}].type`, index, where: `${FQN}.RuleHub#create`}));
 

@@ -4,7 +4,7 @@ import {CastType} from "@leyyo/cast";
 import {ruleHub} from "../src";
 import {TmpClass, TmpField, TmpMethod, TmpParam} from "./decorators";
 
-interface MyRuleOpt {
+interface MyRule1Opt {
     classDesc: string
     myField1Type: ClassLike;
 
@@ -19,7 +19,7 @@ interface MyRuleOpt {
 
 }
 
-export function myRule(opt: MyRuleOpt): ClassLike {
+export function myRule1(opt: MyRule1Opt): ClassLike {
 
     const created = ruleHub.create('MyRule', {
         decorators: [
